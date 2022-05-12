@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.*;
 
 public class UserSelection extends JFrame {
-
+    BST_Cocktails bst = new BST_Cocktails();
     JLabel lblTitle = new JLabel("Cocktail Bar System User Selection");
 
     JButton btnStaff = new JButton("Staff");
@@ -26,6 +26,7 @@ public class UserSelection extends JFrame {
         setListeners();
 
         createBST();
+        outputBST();
     }
 
 
@@ -62,30 +63,37 @@ public class UserSelection extends JFrame {
     }
 
     void createBST() {
-        BST_Cocktails bst = new BST_Cocktails();
+
 
         ObjectInputStream ois = null;
         try {
-            ois = new ObjectInputStream(new FileInputStream("Cocktails"));
+            ois = new ObjectInputStream(new FileInputStream("Cocktails2"));
             while (true) {
                 Cocktail cocktail = (Cocktail) ois.readObject();
-                ois.close();
-                System.out.println(cocktail);
+//                ois.close();
+//                System.out.println(cocktail);
+                bst.insert(cocktail);
             }
 
         } catch (FileNotFoundException e) { // IOException is enough
             e.printStackTrace();
         } catch (EOFException e) { // IOException is enough
-            e.printStackTrace();
+            return;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    void outputBST() {
+        bst.inorder(bst.getRoot());
     }
 
     public static void main(String[] args) {
         new UserSelection().setVisible(true);
-        System.out.println("deneme commit");
     }
+
+
 }
