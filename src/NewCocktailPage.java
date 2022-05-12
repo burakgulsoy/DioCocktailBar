@@ -5,10 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 
 public class NewCocktailPage extends JFrame {
@@ -144,10 +141,11 @@ public class NewCocktailPage extends JFrame {
 
         ObjectOutputStream oos = null;
         try {
-            oos = new ObjectOutputStream(new FileOutputStream("Cocktails",true));
-            oos.writeObject(newCocktail);
-            oos.close();
-            oos.reset();
+            AppendingObjectOutputStream aoos;
+            aoos = new AppendingObjectOutputStream(new FileOutputStream("Cocktails2",true));
+            aoos.writeObject(newCocktail);
+            aoos.close();
+//            oos.reset();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -155,4 +153,17 @@ public class NewCocktailPage extends JFrame {
 
 
     }
+}
+
+ class AppendingObjectOutputStream extends ObjectOutputStream {
+
+    public AppendingObjectOutputStream(OutputStream out) throws IOException {
+        super(out);
+    }
+
+    @Override
+    protected void writeStreamHeader() throws IOException {
+        reset();
+    }
+
 }
