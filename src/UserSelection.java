@@ -86,5 +86,6 @@ public class UserSelection extends JFrame {
 
     public static void main(String[] args) {
         new UserSelection().setVisible(true);
+        System.out.println("deneme commit");
     }
 }
