@@ -1,0 +1,22 @@
++1) içecek class'ı yap
++2) Flavor enumeration
++3) yeni order geldiğinde içecek objesi oluştur, txt'ye obje olarak yazdır
+4) bst oluştur, objeleri içine at  (hata veriyor)
+5) menu management panel (see all eksik)
+6) customer panel
+7)
+
+
+
+**** BINARY SEARCH TREE ****
+new cocktail sayfasında submit ile oluşturulacak yeni kokteyller
+txt dosyasına obje olarak yazdırılacak, programın açılışında bu txt dosyası
+okunarak BST oluşturulacak. see all yaptığımızda BST den çekilerek gösterilebilir,
+dosyadan okunarak teker teker yazdırılabilir.
+
+
+
+**** QUEUE ****
+yeni bir order geldiği zaman sıraya eklenecek ve staff menüsünde orders
+sayfasında queue'deki elemanlar çekilerek gösterilecek, sırayla baştan aşağı
+yazdırılacak
