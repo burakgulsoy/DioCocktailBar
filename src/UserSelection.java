@@ -95,10 +95,6 @@ public class UserSelection extends JFrame {
         new UserSelection().setVisible(true);
     }
 
-    //masterdeneme1
-    //masterdeneme2
 
-    //burakdeneme3
-    //burakdeneme4
 
 }
