@@ -30,8 +30,11 @@ public class StaffPanel extends JFrame {
 
     public StaffPanel() {
 
+
         setDesign();
         setListeners();
+
+
     }
 
     void setDesign() {
@@ -150,6 +153,8 @@ public class StaffPanel extends JFrame {
 //    public static void main(String[] args) {
 //        new StaffPanel().setVisible(true);
 //    }
+
+
 
 
 }

@@ -7,8 +7,6 @@ import java.awt.event.WindowEvent;
 
 public class LoginWindow extends JFrame {
 
-    StaffPanel staffpanel = new StaffPanel();
-
     private String username = "admin";
     private String password = "password";
     JLabel lblUsername = new JLabel("Username:");
@@ -27,11 +25,12 @@ public class LoginWindow extends JFrame {
 
     public LoginWindow() {
         super("Login Window");
+
         setDesign();
         setListeners();
 
-
     }
+    StaffPanel staffpanel = new StaffPanel();
 
     void setDesign() {
 

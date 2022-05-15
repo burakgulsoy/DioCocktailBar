@@ -107,7 +107,7 @@ public class NewCocktailPage extends JFrame {
 
                     if (cbContainsAlcohol.getSelectedItem().equals("false")) {
                         containsAlcohol = false;
-                    } else if (cbContainsAlcohol.getSelectedItem().equals("false")){
+                    } else if (cbContainsAlcohol.getSelectedItem().equals("true")){
                         containsAlcohol = true;
                     }
 
@@ -123,9 +123,9 @@ public class NewCocktailPage extends JFrame {
 
 
 
-    public static void main(String[] args) {
-        new NewCocktailPage().setVisible(true);
-    }
+//    public static void main(String[] args) {
+//        new NewCocktailPage().setVisible(true);
+//    }
 
     void clear() {
         txtName.setText("");
@@ -144,6 +144,7 @@ public class NewCocktailPage extends JFrame {
             AppendingObjectOutputStream aoos;
             aoos = new AppendingObjectOutputStream(new FileOutputStream("Cocktails2",true));
             aoos.writeObject(newCocktail);
+//            System.out.println(newCocktail);
             aoos.close();
 //            oos.reset();
         } catch (IOException e) {
