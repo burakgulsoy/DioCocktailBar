@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.*;
 
 public class UserSelection extends JFrame {
-//    BST_Cocktails bst = new BST_Cocktails();
+    BST_Cocktails bst = new BST_Cocktails();
     JLabel lblTitle = new JLabel("Cocktail Bar System User Selection");
 
     JButton btnStaff = new JButton("Staff");
@@ -25,10 +25,9 @@ public class UserSelection extends JFrame {
         setDesign();
         setListeners();
 
-//        createBST();
-//        outputBST();
+        createBST();
+        outputBST();
     }
-
 
 
     void setDesign() {
@@ -97,8 +96,6 @@ public class UserSelection extends JFrame {
     public static void main(String[] args) {
         new UserSelection().setVisible(true);
     }
-
-
 
 
 
