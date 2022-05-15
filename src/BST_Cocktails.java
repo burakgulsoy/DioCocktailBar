@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class BST_Cocktails {
     private TreeNode root;
     private int size;
-    ArrayList<Cocktail> cocktailArrayList = new ArrayList<>();
+    private ArrayList<Cocktail> cocktailArrayList = new ArrayList<>();
 
     public BST_Cocktails() {
         root = null;
@@ -22,6 +22,9 @@ public class BST_Cocktails {
         return root;
     }
 
+    public ArrayList<Cocktail> getCocktailArrayList() {
+        return cocktailArrayList;
+    }
 
     public boolean insert(Cocktail newCocktail) {
         if (root == null) {

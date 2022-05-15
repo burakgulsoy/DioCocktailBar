@@ -25,11 +25,11 @@ public class AllRecipes extends JFrame {
 //        outputBST();
 
         bst_cocktails.inorderCreatingArrayList(bst_cocktails.getRoot());
-//        System.out.println(bst_cocktails.cocktailArrayList);
+        System.out.println(bst_cocktails.getCocktailArrayList());
 
         setDesign();
         setListeners();
-
+        additionalFunctions();
     }
 
     void setDesign() {
@@ -49,6 +49,10 @@ public class AllRecipes extends JFrame {
 
     void setListeners() {
 
+    }
+
+    void additionalFunctions() {
+        addDlmElements();
     }
 
     void createBST() {
@@ -80,9 +84,18 @@ public class AllRecipes extends JFrame {
         bst_cocktails.inorder(bst_cocktails.getRoot());
     }
 
+    void addDlmElements() {
 
-    public static void main(String[] args) {
-        new AllRecipes().setVisible(true);
+        for (int i = 0; i < bst_cocktails.getCocktailArrayList().size(); i++) {
+            dlm.addElement(bst_cocktails.getCocktailArrayList().get(i));
+        }
+
     }
+
+
+
+//    public static void main(String[] args) {
+//        new AllRecipes().setVisible(true);
+//    }
 
 }

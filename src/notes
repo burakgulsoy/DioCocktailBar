@@ -11,9 +11,8 @@
 **** BINARY SEARCH TREE ****
 new cocktail sayfasında submit ile oluşturulacak yeni kokteyller
 txt dosyasına obje olarak yazdırılacak, programın açılışında bu txt dosyası
-okunarak BST oluşturulacak. see all yaptığımızda BST den çekilerek gösterilebilir,
-dosyadan okunarak teker teker yazdırılabilir.
-
+okunarak BST oluşturulacak. MenuManagement panelinde see all butonunu kullandığımızda BST içerisinden inorder
+yöntemiyle okunup default list model içerisine eklenecektir.
 
 
 **** QUEUE ****
@@ -31,3 +30,6 @@ BST veritabanı oluştururken normal ObjectOutputStream kullanılması gerekiyor
 2) Kokteyl isminde sayı kullanıldığında string olarak algıladığı için, başlangıcı aynı olup sonunda (12,15,121)
 sayıları bulunduran içecekler için inorder sıralaması 12 - 121 - 15 gibi oluyor.
 Çözüm-> isimde sayı kullanımı kısıtlanabilir
+
+3) Program açıkken yeni kokteyl eklendiğinde tüm tariflerin olduğu AllRecipes sayfasında dinamik olarak eklenmiyor.
+Program açılıp kapandıktan sonra değişiklik uygulanıyor.

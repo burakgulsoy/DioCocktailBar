@@ -123,9 +123,9 @@ public class NewCocktailPage extends JFrame {
 
 
 
-    public static void main(String[] args) {
-        new NewCocktailPage().setVisible(true);
-    }
+//    public static void main(String[] args) {
+//        new NewCocktailPage().setVisible(true);
+//    }
 
     void clear() {
         txtName.setText("");
