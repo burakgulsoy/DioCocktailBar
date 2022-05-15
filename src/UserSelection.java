@@ -25,8 +25,8 @@ public class UserSelection extends JFrame {
         setDesign();
         setListeners();
 
-        createBST();
-        outputBST();
+//        createBST();
+//        outputBST();
     }
 
 

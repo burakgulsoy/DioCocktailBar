@@ -5,6 +5,9 @@ import java.util.ArrayList;
 
 public class AllRecipes extends JFrame {
 
+    NewCocktailPage newCocktailPage;
+    File file = new File("Cocktails");
+
     BST_Cocktails bst_cocktails = new BST_Cocktails();
 
     JPanel pnlEdit = new JPanel(new FlowLayout());
@@ -60,13 +63,16 @@ public class AllRecipes extends JFrame {
 
         ObjectInputStream ois = null;
         try {
-            ois = new ObjectInputStream(new FileInputStream("Cocktails2"));
-            while (true) {
-                Cocktail cocktail = (Cocktail) ois.readObject();
+            if (file.length() != 0) {
+                ois = new ObjectInputStream(new FileInputStream("Cocktails"));
+                while (true) {
+                    Cocktail cocktail = (Cocktail) ois.readObject();
 //                ois.close();
 //                System.out.println(cocktail);
-                bst_cocktails.insert(cocktail);
+                    bst_cocktails.insert(cocktail);
+                }
             }
+
 
         } catch (FileNotFoundException e) { // IOException is enough
             e.printStackTrace();
@@ -90,6 +96,10 @@ public class AllRecipes extends JFrame {
             dlm.addElement(bst_cocktails.getCocktailArrayList().get(i));
         }
 
+    }
+
+    public void getNewCocktailPage(NewCocktailPage newCocktailPage) {
+        this.newCocktailPage = newCocktailPage;
     }
 
 

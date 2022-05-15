@@ -19,6 +19,7 @@ public class MenuManagement extends JFrame {
 
         setDesign();
         setListeners();
+        allRecipes.getNewCocktailPage(newCocktailPage);
     }
 
 

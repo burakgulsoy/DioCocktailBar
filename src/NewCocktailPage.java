@@ -9,6 +9,8 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class NewCocktailPage extends JFrame {
+    private String fileName = "Cocktails";
+    File file = new File(fileName);
 
     JPanel pnlCenter = new JPanel(new GridLayout(6, 2, 15, 10));
     JPanel pnlSouth = new JPanel(new FlowLayout());
@@ -139,13 +141,21 @@ public class NewCocktailPage extends JFrame {
 
     void registerNewCocktail(Cocktail newCocktail) {
 
-        ObjectOutputStream oos = null;
+          ObjectOutputStream oos;
+//        AppendingObjectOutputStream aoos;
         try {
-            AppendingObjectOutputStream aoos;
-            aoos = new AppendingObjectOutputStream(new FileOutputStream("Cocktails2",true));
-            aoos.writeObject(newCocktail);
+            if (file.length() != 0) {
+                AppendingObjectOutputStream aoos;
+                aoos = new AppendingObjectOutputStream(new FileOutputStream(fileName, true));
+                aoos.writeObject(newCocktail);
 //            System.out.println(newCocktail);
-            aoos.close();
+                aoos.close();
+            } else {
+                oos = new ObjectOutputStream(new FileOutputStream(fileName));
+                oos.writeObject(newCocktail);
+                oos.close();
+            }
+//
 //            oos.reset();
         } catch (IOException e) {
             e.printStackTrace();
@@ -153,6 +163,14 @@ public class NewCocktailPage extends JFrame {
 
 
 
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }
 
@@ -166,5 +184,7 @@ public class NewCocktailPage extends JFrame {
     protected void writeStreamHeader() throws IOException {
         reset();
     }
+
+
 
 }

@@ -22,7 +22,8 @@ yazdırılacak
 
 
 *** HATALAR ***
-1) Cocktails2 dosyasında hiç obje yoksa ilk objeyi override edilen method ile yapmamak gerekiyor çünkü bu method ile
+
+++++ ÇÖZÜLDÜ 1) Cocktails2 dosyasında hiç obje yoksa ilk objeyi override edilen method ile yapmamak gerekiyor çünkü bu method ile
 objelerin başına gelen header özelliğini kaldırdık. ancak ilk objenin başında bir header bulunması gerektiği için sıfırdan
 BST veritabanı oluştururken normal ObjectOutputStream kullanılması gerekiyor.
 Çözüm-> dosyanın boş olup olmadığını anlayabileceğimiz bir method varsa if else ile farklı output stream fonksiyonu kullanılabilir
@@ -33,3 +34,6 @@ sayıları bulunduran içecekler için inorder sıralaması 12 - 121 - 15 gibi o
 
 3) Program açıkken yeni kokteyl eklendiğinde tüm tariflerin olduğu AllRecipes sayfasında dinamik olarak eklenmiyor.
 Program açılıp kapandıktan sonra değişiklik uygulanıyor.
+
+4) File ismini dinamik olarak aktarmak için newcocktailpage'i allrecipes içerisine atmak gerekiyor yoksa
+file ismini okurken manuel girmek durumundayız
