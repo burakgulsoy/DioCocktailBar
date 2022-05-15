@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 public class MenuManagement extends JFrame {
 
     NewCocktailPage newCocktailPage = new NewCocktailPage();
+    AllRecipes allRecipes = new AllRecipes();
 
     JPanel pnlButtons = new JPanel(new GridLayout(1, 2, 10, 10));
     JButton btnNew = new JButton("New");
@@ -14,7 +15,6 @@ public class MenuManagement extends JFrame {
 
     public MenuManagement() {
         super("Menu Management");
-
 
 
         setDesign();
@@ -42,7 +42,17 @@ public class MenuManagement extends JFrame {
                 setVisible(false);
             }
         });
+
+        btnSeeAll.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                allRecipes.setVisible(true);
+                setVisible(false);
+            }
+        });
     }
+
+
 
 //    public static void main(String[] args) {
 //        new MenuManagement().setVisible(true);

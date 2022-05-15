@@ -1,6 +1,9 @@
+import java.util.ArrayList;
+
 public class BST_Cocktails {
     private TreeNode root;
     private int size;
+    ArrayList<Cocktail> cocktailArrayList = new ArrayList<>();
 
     public BST_Cocktails() {
         root = null;
@@ -18,6 +21,7 @@ public class BST_Cocktails {
     public TreeNode getRoot() {
         return root;
     }
+
 
     public boolean insert(Cocktail newCocktail) {
         if (root == null) {
@@ -55,8 +59,21 @@ public class BST_Cocktails {
 
         inorder(root.getLeft());
         System.out.println(root.getElement() + " ");
+//        cocktailArrayList.add(root.getElement());
         inorder(root.getRight());
     }
+
+    public void inorderCreatingArrayList(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        inorderCreatingArrayList(root.getLeft());
+//        System.out.println(root.getElement() + " ");
+        cocktailArrayList.add(root.getElement());
+        inorderCreatingArrayList(root.getRight());
+    }
+
 
     public void postorder(TreeNode root) {
         if (root == null) {
