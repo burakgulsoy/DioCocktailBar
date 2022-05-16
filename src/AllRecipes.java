@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -22,8 +24,9 @@ public class AllRecipes extends JFrame {
     JScrollPane sp = new JScrollPane(list);
 
 
-    public AllRecipes() {
+    public AllRecipes(NewCocktailPage newCocktailPage) {
         super("All Recipes");
+        this.newCocktailPage = newCocktailPage;
         createBST();
 //        outputBST();
 
@@ -52,6 +55,65 @@ public class AllRecipes extends JFrame {
 
     void setListeners() {
 
+        btnEdit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                if (list.getSelectedIndex() == -1) {
+                    return;
+                }
+                newCocktailPage.clear();
+                newCocktailPage.setVisible(true);
+                newCocktailPage.btnSubmit.setText("Update");
+
+                String element = list.getSelectedValue().toString();
+                String splitted[] = element.split(" ");
+
+                newCocktailPage.txtName.setText(splitted[0]);
+
+                if (splitted[1].equals("true")) {
+                    newCocktailPage.cbContainsAlcohol.setSelectedIndex(0);
+                } else {
+                    newCocktailPage.cbContainsAlcohol.setSelectedIndex(1);
+                }
+
+                newCocktailPage.txtAlcoholRate.setText(splitted[2]);
+                newCocktailPage.txtFruits.setText(splitted[3]);
+
+                String flavor = splitted[4];
+
+                switch (flavor) {
+                    case "Sweet":
+                        newCocktailPage.cbFlavor.setSelectedIndex(0);
+                        break;
+                    case "Sour":
+                        newCocktailPage.cbFlavor.setSelectedIndex(1);
+                        break;
+                    case "Bitter":
+                        newCocktailPage.cbFlavor.setSelectedIndex(2);
+                        break;
+                    case "Salty":
+                        newCocktailPage.cbFlavor.setSelectedIndex(3);
+                        break;
+                    case "Spicy":
+                        newCocktailPage.cbFlavor.setSelectedIndex(4);
+                        break;
+                    case "Boozy":
+                        newCocktailPage.cbFlavor.setSelectedIndex(5);
+                        break;
+                    case "Umami":
+                        newCocktailPage.cbFlavor.setSelectedIndex(6);
+                        break;
+                    case "Astringent":
+                        newCocktailPage.cbFlavor.setSelectedIndex(7);
+                        break;
+                }
+
+                newCocktailPage.txtPrice.setText(splitted[5]);
+
+
+            }
+        });
     }
 
     void additionalFunctions() {
@@ -98,9 +160,7 @@ public class AllRecipes extends JFrame {
 
     }
 
-    public void getNewCocktailPage(NewCocktailPage newCocktailPage) {
-        this.newCocktailPage = newCocktailPage;
-    }
+
 
 
 
