@@ -144,6 +144,7 @@ public class NewCocktailPage extends JFrame {
           ObjectOutputStream oos;
 //        AppendingObjectOutputStream aoos;
         try {
+
             if (file.length() != 0) {
                 AppendingObjectOutputStream aoos;
                 aoos = new AppendingObjectOutputStream(new FileOutputStream(fileName, true));
@@ -156,6 +157,13 @@ public class NewCocktailPage extends JFrame {
                 oos.close();
             }
 //
+=======
+            AppendingObjectOutputStream aoos;
+            aoos = new AppendingObjectOutputStream(new FileOutputStream("Cocktails2",true));
+            aoos.writeObject(newCocktail);
+//            System.out.println(newCocktail);
+            aoos.close();
+r
 //            oos.reset();
         } catch (IOException e) {
             e.printStackTrace();

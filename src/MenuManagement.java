@@ -6,7 +6,11 @@ import java.awt.event.ActionListener;
 public class MenuManagement extends JFrame {
 
     NewCocktailPage newCocktailPage = new NewCocktailPage();
+
     AllRecipes allRecipes = new AllRecipes(newCocktailPage);
+=======
+    AllRecipes allRecipes = new AllRecipes();
+
 
     JPanel pnlButtons = new JPanel(new GridLayout(1, 2, 10, 10));
     JButton btnNew = new JButton("New");
