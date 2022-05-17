@@ -29,7 +29,7 @@ public class StaffPanel extends JFrame {
     JLabel lblOccupiedTables = new JLabel("Occupied Tables");
 
     public StaffPanel() {
-
+        super("Staff Panel");
 
         setDesign();
         setListeners();

@@ -1,10 +1,7 @@
 import javax.swing.*;
 import javax.swing.plaf.BorderUIResource;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -188,6 +185,18 @@ public class NewCocktailPage extends JFrame {
                     }
 
                     fruitList.clear();
+                }
+            }
+        });
+
+        txtAlcoholRate.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                if (cbContainsAlcohol.getSelectedIndex() == 0) {
+                    txtAlcoholRate.setEnabled(true);
+                } else {
+                    txtAlcoholRate.setText("0");
+                    txtAlcoholRate.setEnabled(false);
                 }
             }
         });
