@@ -117,6 +117,81 @@ public class AllRecipes extends JFrame {
             }
         });
 
+        btnDelete.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (list.getSelectedIndex() == -1) {
+                    return;
+                }
+
+                String element = list.getSelectedValue().toString();
+                String splitted[] = element.split(" ");
+
+                FLAVOR flavor = null;
+
+                switch (splitted[4]) {
+                    case "Sweet":
+                        flavor = FLAVOR.SWEET;
+                        break;
+                    case "Sour":
+                        flavor = FLAVOR.SOUR;
+                        break;
+                    case "Bitter":
+                        flavor = FLAVOR.BITTER;
+                        break;
+                    case "Salty":
+                        flavor = FLAVOR.SALTY;
+                        break;
+                    case "Spicy":
+                        flavor = FLAVOR.SPICY;
+                        break;
+                    case "Boozy":
+                        flavor = FLAVOR.BOOZY;
+                        break;
+                    case "Umami":
+                        flavor = FLAVOR.UMAMI;
+                        break;
+                    case "Astringent":
+                        flavor = FLAVOR.ASTRINGENT;
+                        break;
+                }
+
+                String fruitArrayForArrayList[] = splitted[3].split("-");
+                ArrayList fruitListForArrayList = new ArrayList();
+
+                for (int i = 0; i < fruitArrayForArrayList.length; i++) {
+                    fruitListForArrayList.add(fruitArrayForArrayList[i]);
+                }
+
+                Cocktail newCocktailToBeAddedToArrayList = new Cocktail(splitted[0],splitted[1].equals("true") ? true : false, Integer.parseInt(splitted[2]),fruitListForArrayList,flavor,Double.parseDouble(splitted[5]));
+
+
+                int index = 0;
+
+                for (int i = 0; i < cocktailArrayList.size(); i++) {
+                    if (cocktailArrayList.get(i).toString().equals(newCocktailToBeAddedToArrayList.toString())) {
+                        index = i;
+                    }
+                }
+
+                cocktailArrayList.remove(index);
+                dlm.remove(index);
+
+                PrintWriter pw = null;
+                try {
+                    pw = new PrintWriter("Cocktails");
+                } catch (FileNotFoundException ex) {
+                    System.out.println("exp");
+                }
+                pw.close();
+
+                for (int i = 0; i < cocktailArrayList.size(); i++) {
+                    newCocktailPage.registerNewCocktail(cocktailArrayList.get(i));
+                }
+
+            }
+        });
+
         newCocktailPage.btnSubmit.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

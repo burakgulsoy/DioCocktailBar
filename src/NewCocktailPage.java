@@ -155,7 +155,7 @@ public class NewCocktailPage extends JFrame {
                         ArrayList fruitListForArrayList = new ArrayList();
 
                         for (int i = 0; i < fruitArrayForArrayList.length; i++) {
-                            fruitListForArrayList.add(fruitArray[i]);
+                            fruitListForArrayList.add(fruitArrayForArrayList[i]);
                         }
 
                         Cocktail newCocktailToBeAddedToArrayList = new Cocktail(splitted[0],splitted[1].equals("true") ? true : false, Integer.parseInt(splitted[2]),fruitListForArrayList,flavor,Double.parseDouble(splitted[5]));
