@@ -116,11 +116,90 @@ public class NewCocktailPage extends JFrame {
                     Cocktail newCocktail = new Cocktail(txtName.getText(), containsAlcohol, Integer.parseInt(txtAlcoholRate.getText()), fruitList, (FLAVOR) cbFlavor.getSelectedItem(),Double.parseDouble(txtPrice.getText()));
 
                     System.out.println(newCocktail);
-                    registerNewCocktail(newCocktail);
+                    if (btnSubmit.getText().equals("Submit")) {
+                        registerNewCocktail(newCocktail);
+                    } else if (btnSubmit.getText().equals("Update")) {
+                        String element = jlist.getSelectedValue().toString();
+                        String splitted[] = element.split(" ");
+
+                        FLAVOR flavor = null;
+
+                        switch (splitted[4]) {
+                            case "Sweet":
+                                flavor = FLAVOR.SWEET;
+                                break;
+                            case "Sour":
+                                flavor = FLAVOR.SOUR;
+                                break;
+                            case "Bitter":
+                                flavor = FLAVOR.BITTER;
+                                break;
+                            case "Salty":
+                                flavor = FLAVOR.SALTY;
+                                break;
+                            case "Spicy":
+                                flavor = FLAVOR.SPICY;
+                                break;
+                            case "Boozy":
+                                flavor = FLAVOR.BOOZY;
+                                break;
+                            case "Umami":
+                                flavor = FLAVOR.UMAMI;
+                                break;
+                            case "Astringent":
+                                flavor = FLAVOR.ASTRINGENT;
+                                break;
+                        }
+
+                        String fruitArrayForArrayList[] = splitted[3].split("-");
+                        ArrayList fruitListForArrayList = new ArrayList();
+
+                        for (int i = 0; i < fruitArrayForArrayList.length; i++) {
+                            fruitListForArrayList.add(fruitArray[i]);
+                        }
+
+                        Cocktail newCocktailToBeAddedToArrayList = new Cocktail(splitted[0],splitted[1].equals("true") ? true : false, Integer.parseInt(splitted[2]),fruitListForArrayList,flavor,Double.parseDouble(splitted[5]));
+
+
+                        int index = 0;
+
+                        for (int i = 0; i < cocktailArrayList.size(); i++) {
+                            if (cocktailArrayList.get(i).toString().equals(newCocktailToBeAddedToArrayList.toString())) {
+                                index = i;
+                            }
+                        }
+
+                        cocktailArrayList.remove(index);
+                        cocktailArrayList.add(newCocktail);
+                        System.out.println(cocktailArrayList);
+                        fruitListForArrayList.clear();
+
+                        PrintWriter pw = null;
+                        try {
+                            pw = new PrintWriter(fileName);
+                        } catch (FileNotFoundException ex) {
+                            System.out.println("exp");
+                        }
+                        pw.close();
+
+                        for (int i = 0; i < cocktailArrayList.size(); i++) {
+                            registerNewCocktail(cocktailArrayList.get(i));
+                        }
+                    }
+
                     fruitList.clear();
                 }
             }
         });
+    }
+
+    DefaultListModel<Cocktail> dlm;
+    JList jlist;
+    ArrayList<Cocktail> cocktailArrayList;
+    public void transferDlmAndList(DefaultListModel<Cocktail> dlm, JList jlist, ArrayList<Cocktail> cocktailArrayList) {
+        this.dlm = dlm;
+        this.jlist = jlist;
+        this.cocktailArrayList = cocktailArrayList;
     }
 
 

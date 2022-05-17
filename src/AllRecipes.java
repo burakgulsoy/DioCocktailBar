@@ -11,6 +11,7 @@ public class AllRecipes extends JFrame {
 
 
     NewCocktailPage newCocktailPage;
+    ArrayList<Cocktail> cocktailArrayList = new ArrayList<>();
     File file = new File("Cocktails");
 
 
@@ -40,7 +41,7 @@ public class AllRecipes extends JFrame {
 //        outputBST();
 
         bst_cocktails.inorderCreatingArrayList(bst_cocktails.getRoot());
-        System.out.println(bst_cocktails.getCocktailArrayList());
+//        System.out.println("bst_cocktails: " + bst_cocktails.getCocktailArrayList());
 
         setDesign();
         setListeners();
@@ -122,6 +123,14 @@ public class AllRecipes extends JFrame {
                 newCocktailPage.txtPrice.setText(splitted[5]);
 
 
+
+            }
+        });
+
+        newCocktailPage.btnSubmit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
             }
         });
 
@@ -130,6 +139,7 @@ public class AllRecipes extends JFrame {
 
     void additionalFunctions() {
         addDlmElements();
+        newCocktailPage.transferDlmAndList(dlm,list,cocktailArrayList);
     }
 
     void createBST() {
@@ -145,7 +155,10 @@ public class AllRecipes extends JFrame {
 //                ois.close();
 //                System.out.println(cocktail);
                     bst_cocktails.insert(cocktail);
+                    cocktailArrayList.add(cocktail);
+
                 }
+
             }
 
 
@@ -167,6 +180,8 @@ public class AllRecipes extends JFrame {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            System.out.println("cocktail arraylist in allrecipes: " + cocktailArrayList);
         }
 
     }
