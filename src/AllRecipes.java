@@ -1,19 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import java.io.*;
 import java.util.ArrayList;
 
 public class AllRecipes extends JFrame {
 
-
     NewCocktailPage newCocktailPage;
     ArrayList<Cocktail> cocktailArrayList = new ArrayList<>();
     File file = new File("Cocktails");
-
 
     BST_Cocktails bst_cocktails = new BST_Cocktails();
 
@@ -29,14 +25,9 @@ public class AllRecipes extends JFrame {
     JScrollPane sp = new JScrollPane(list);
 
 
-
     public AllRecipes(NewCocktailPage newCocktailPage) {
         super("All Recipes");
         this.newCocktailPage = newCocktailPage;
-
-    public AllRecipes() {
-        super("All Recipes");
-
         createBST();
 //        outputBST();
 
@@ -64,7 +55,6 @@ public class AllRecipes extends JFrame {
     }
 
     void setListeners() {
-
 
         btnEdit.addMouseListener(new MouseAdapter() {
             @Override
@@ -133,8 +123,6 @@ public class AllRecipes extends JFrame {
 
             }
         });
-
-
     }
 
     void additionalFunctions() {
@@ -147,7 +135,6 @@ public class AllRecipes extends JFrame {
 
         ObjectInputStream ois = null;
         try {
-
             if (file.length() != 0) {
                 ois = new ObjectInputStream(new FileInputStream("Cocktails"));
                 while (true) {
@@ -159,16 +146,6 @@ public class AllRecipes extends JFrame {
 
                 }
 
-            }
-
-
-
-            ois = new ObjectInputStream(new FileInputStream("Cocktails2"));
-            while (true) {
-                Cocktail cocktail = (Cocktail) ois.readObject();
-//                ois.close();
-//                System.out.println(cocktail);
-                bst_cocktails.insert(cocktail);
             }
 
 
@@ -197,9 +174,6 @@ public class AllRecipes extends JFrame {
         }
 
     }
-
-
-
 
 
 
