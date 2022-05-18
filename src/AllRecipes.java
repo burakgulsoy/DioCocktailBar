@@ -32,7 +32,7 @@ public class AllRecipes extends JFrame {
 //        outputBST();
 
         bst_cocktails.inorderCreatingArrayList(bst_cocktails.getRoot());
-//        System.out.println("bst_cocktails: " + bst_cocktails.getCocktailArrayList());
+        System.out.println("bst_cocktails: " + bst_cocktails.getCocktailArrayList());
 
         setDesign();
         setListeners();
@@ -233,7 +233,7 @@ public class AllRecipes extends JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            System.out.println("cocktail arraylist in allrecipes: " + cocktailArrayList);
+//            System.out.println("cocktail arraylist in allrecipes: " + cocktailArrayList);
         }
 
     }
