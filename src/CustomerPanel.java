@@ -1,7 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CustomerPanel extends JFrame {
+
+    CustomerPanelMenu customerPanelMenu = new CustomerPanelMenu();
 
     JLabel lblSelectTable = new JLabel("Select table:");
     JLabel lblBill = new JLabel("Bill:                         ");
@@ -20,6 +24,7 @@ public class CustomerPanel extends JFrame {
     JScrollPane spOrders = new JScrollPane(listOrders);
 
     JPanel pnlCenterRight = new JPanel(new GridLayout(3, 2,10,10));
+    JPanel pnlCenterLeft = new JPanel();
     JPanel pnlCenter = new JPanel(new FlowLayout());
     JPanel pnlSouth = new JPanel(new FlowLayout());
 
@@ -38,6 +43,7 @@ public class CustomerPanel extends JFrame {
 
         setLayout(new BorderLayout());
         setSize(350,350);
+        setLocation(600,240);
 
         pnlCenterRight.add(lblSelectTable);
         pnlCenterRight.add(cbTables);
@@ -64,6 +70,12 @@ public class CustomerPanel extends JFrame {
 
     void setListeners() {
 
+        btnMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                customerPanelMenu.setVisible(true);
+            }
+        });
     }
 
 

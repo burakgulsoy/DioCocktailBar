@@ -208,20 +208,20 @@ public class AllRecipes extends JFrame {
     void createBST() {
 
 
-        ObjectInputStream ois = null;
-        try {
-            if (file.length() != 0) {
-                ois = new ObjectInputStream(new FileInputStream("Cocktails"));
-                while (true) {
-                    Cocktail cocktail = (Cocktail) ois.readObject();
+                ObjectInputStream ois = null;
+                try {
+                    if (file.length() != 0) {
+                        ois = new ObjectInputStream(new FileInputStream("Cocktails"));
+                        while (true) {
+                            Cocktail cocktail = (Cocktail) ois.readObject();
 //                ois.close();
 //                System.out.println(cocktail);
-                    bst_cocktails.insert(cocktail);
-                    cocktailArrayList.add(cocktail);
+                            bst_cocktails.insert(cocktail);
+                            cocktailArrayList.add(cocktail);
 
-                }
+                        }
 
-            }
+                    }
 
 
         } catch (FileNotFoundException e) { // IOException is enough
