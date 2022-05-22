@@ -31,8 +31,8 @@ public class AllRecipes extends JFrame {
         createBST();
 //        outputBST();
 
-        bst_cocktails.inorderCreatingArrayList(bst_cocktails.getRoot());
-        System.out.println("bst_cocktails: " + bst_cocktails.getCocktailArrayList());
+        bst_cocktails.inorderCreatingArrayList(bst_cocktails.getRoot()); // bst cocktails içindeki arraylist burada oluşturuluyor
+        System.out.println("bst_cocktails: " + bst_cocktails.getCocktailArrayList()); // başlangıçta dosyayı doğru okuyup okumadığını kontrol
 
         setDesign();
         setListeners();
@@ -186,8 +186,10 @@ public class AllRecipes extends JFrame {
                 pw.close();
 
                 for (int i = 0; i < cocktailArrayList.size(); i++) {
-                    newCocktailPage.registerNewCocktail(cocktailArrayList.get(i));
+                    newCocktailPage.registerNewCocktail(cocktailArrayList.get(i)); // dosyayı sıfırlayıp yeniden oluşturuyor
                 }
+
+                bst_cocktails.setCocktailArrayList(cocktailArrayList); // !!!!!!!!!
 
             }
         });
@@ -202,10 +204,10 @@ public class AllRecipes extends JFrame {
 
     void additionalFunctions() {
         addDlmElements();
-        newCocktailPage.transferDlmAndList(dlm,list,cocktailArrayList);
+        newCocktailPage.transferDlmAndList(dlm,list,cocktailArrayList,bst_cocktails);
     }
 
-    void createBST() {
+    public void createBST() {
 
 
                 ObjectInputStream ois = null;
@@ -246,6 +248,7 @@ public class AllRecipes extends JFrame {
 
         for (int i = 0; i < bst_cocktails.getCocktailArrayList().size(); i++) {
             dlm.addElement(bst_cocktails.getCocktailArrayList().get(i));
+//            System.out.println(i + ".: " + bst_cocktails.getCocktailArrayList().get(i));
         }
 
     }

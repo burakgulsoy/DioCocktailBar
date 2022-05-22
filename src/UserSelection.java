@@ -18,7 +18,7 @@ public class UserSelection extends JFrame {
     JPanel pnlButtons = new JPanel(new GridLayout(1,2));
 
     LoginWindow lw = new LoginWindow();
-    CustomerPanelMenu customerPanelMenu = new CustomerPanelMenu();
+    CustomerPanel customerPanel = new CustomerPanel();
 
     public UserSelection(){
         super("User Selection Page");
@@ -67,7 +67,7 @@ public class UserSelection extends JFrame {
         btnCustomer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                customerPanelMenu.setVisible(true);
+                customerPanel.setVisible(true);
             }
         });
     }

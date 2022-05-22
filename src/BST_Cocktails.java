@@ -22,6 +22,14 @@ public class BST_Cocktails {
         return root;
     }
 
+    public void setRoot(TreeNode root) {
+        this.root = root;
+    }
+
+    public void setCocktailArrayList(ArrayList<Cocktail> cocktailArrayList) {
+        this.cocktailArrayList = cocktailArrayList;
+    }
+
     public ArrayList<Cocktail> getCocktailArrayList() {
         return cocktailArrayList;
     }

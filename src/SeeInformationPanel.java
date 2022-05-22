@@ -17,15 +17,14 @@ public class SeeInformationPanel extends JFrame {
     JLabel lblPriceInfo = new JLabel();
 
 
-    JButton btnAddToBasket = new JButton("Add to basket");
 
     JPanel pnlCenter = new JPanel(new GridLayout(6, 2, 15, 10));
-    JPanel pnlSouth = new JPanel(new FlowLayout());
 
 
 
 
     public SeeInformationPanel() {
+        super("See All Information");
 
         setDesign();
         setListeners();
@@ -50,8 +49,7 @@ public class SeeInformationPanel extends JFrame {
 
         add(pnlCenter, BorderLayout.CENTER);
 
-        pnlSouth.add(btnAddToBasket);
-        add(pnlSouth, BorderLayout.SOUTH);
+
     }
 
     void setListeners() {

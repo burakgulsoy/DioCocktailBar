@@ -4,10 +4,12 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class NewCocktailPage extends JFrame {
     private String fileName = "Cocktails";
     File file = new File(fileName);
+    BST_Cocktails bst_cocktails;
 
     JPanel pnlCenter = new JPanel(new GridLayout(6, 2, 15, 10));
     JPanel pnlSouth = new JPanel(new FlowLayout());
@@ -90,6 +92,8 @@ public class NewCocktailPage extends JFrame {
             }
         });
 
+
+
         btnSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -115,6 +119,41 @@ public class NewCocktailPage extends JFrame {
                     System.out.println(newCocktail);
                     if (btnSubmit.getText().equals("Submit")) {
                         registerNewCocktail(newCocktail);
+
+                        cocktailArrayList.add(newCocktail);
+                        dlm.clear();
+
+                        int cocktailArrayLength = cocktailArrayList.size();
+                        Cocktail cocktailArray[] = new Cocktail[cocktailArrayLength];
+
+                        for (int i = 0; i < cocktailArrayList.size(); i++) {
+                            cocktailArray[i] = cocktailArrayList.get(i);
+                        }
+
+
+                        for (int i = 0; i < cocktailArray.length; i++) {
+                            for (int j = 0; j < cocktailArray.length; j++) {
+
+                                if (j < cocktailArray.length - 1) {
+
+                                    if (cocktailArray[j].getName().compareTo(cocktailArray[j + 1].getName()) > 0) {
+                                        Cocktail temp = cocktailArray[j];
+                                        cocktailArray[j] = cocktailArray[j + 1];
+                                        cocktailArray[j + 1] = temp;
+                                    }
+                                }
+                            }
+                        }
+
+                        cocktailArrayList.clear();
+
+                        for (int i = 0; i < cocktailArray.length; i++) {
+                            cocktailArrayList.add(cocktailArray[i]);
+                            dlm.addElement(cocktailArray[i]);
+                        }
+
+
+//                        dlm.addElement(newCocktail);
                     } else if (btnSubmit.getText().equals("Update")) {
                         String element = jlist.getSelectedValue().toString();
                         String splitted[] = element.split(" ");
@@ -155,23 +194,22 @@ public class NewCocktailPage extends JFrame {
                             fruitListForArrayList.add(fruitArrayForArrayList[i]);
                         }
 
-                        Cocktail newCocktailToBeAddedToArrayList = new Cocktail(splitted[0],splitted[1].equals("true") ? true : false, Integer.parseInt(splitted[2]),fruitListForArrayList,flavor,Double.parseDouble(splitted[5]));
+                        Cocktail cocktailToBeRemoved = new Cocktail(splitted[0],splitted[1].equals("true") ? true : false, Integer.parseInt(splitted[2]),fruitListForArrayList,flavor,Double.parseDouble(splitted[5]));
 
 
                         int index = 0;
 
                         for (int i = 0; i < cocktailArrayList.size(); i++) {
-                            if (cocktailArrayList.get(i).toString().equals(newCocktailToBeAddedToArrayList.toString())) {
+                            if (cocktailArrayList.get(i).toString().equals(cocktailToBeRemoved.toString())) {
                                 index = i;
                             }
                         }
 
-                        cocktailArrayList.remove(index);
-                        cocktailArrayList.add(newCocktail);
-                        System.out.println(cocktailArrayList);
-                        fruitListForArrayList.clear();
+                        cocktailArrayList.remove(index);  // değiştirilen eleman çıkartılıyor
+                        cocktailArrayList.add(newCocktail); // yeni eleman ekleniyor
+                        System.out.println("burası: " + cocktailArrayList);
 
-                        PrintWriter pw = null;
+                        PrintWriter pw = null;  // dosyayı sıfırlayıp
                         try {
                             pw = new PrintWriter(fileName);
                         } catch (FileNotFoundException ex) {
@@ -180,12 +218,51 @@ public class NewCocktailPage extends JFrame {
                         pw.close();
 
                         for (int i = 0; i < cocktailArrayList.size(); i++) {
-                            registerNewCocktail(cocktailArrayList.get(i));
+                            registerNewCocktail(cocktailArrayList.get(i));  // değiştirilmiş versiyonla birlikte dosyaya tekrar yazdırıyoruz
                         }
+                        dlm.clear();
+
+
+                        int cocktailArrayLength = cocktailArrayList.size();
+                        Cocktail cocktailArray[] = new Cocktail[cocktailArrayLength];
+
+                        for (int i = 0; i < cocktailArrayList.size(); i++) {
+                            cocktailArray[i] = cocktailArrayList.get(i);
+                        }
+
+
+                        for (int i = 0; i < cocktailArray.length; i++) {
+                            for (int j = 0; j < cocktailArray.length; j++) {
+
+                                if (j < cocktailArray.length - 1) {
+
+                                    if (cocktailArray[j].getName().compareTo(cocktailArray[j + 1].getName()) > 0) {
+                                        Cocktail temp = cocktailArray[j];
+                                        cocktailArray[j] = cocktailArray[j + 1];
+                                        cocktailArray[j + 1] = temp;
+                                    }
+                                }
+                            }
+                        }
+
+                        cocktailArrayList.clear();
+
+                        for (int i = 0; i < cocktailArray.length; i++) {
+                            cocktailArrayList.add(cocktailArray[i]);
+                            dlm.addElement(cocktailArray[i]);
+                        }
+
+                        bst_cocktails.setCocktailArrayList(cocktailArrayList);
+
+                        System.out.println("burası2: " + cocktailArrayList);
+                        System.out.println("son bst hali: " + bst_cocktails.getCocktailArrayList());
+
+
                     }
 
-                    fruitList.clear();
                 }
+
+
             }
         });
 
@@ -205,11 +282,20 @@ public class NewCocktailPage extends JFrame {
     DefaultListModel<Cocktail> dlm;
     JList jlist;
     ArrayList<Cocktail> cocktailArrayList;
-    public void transferDlmAndList(DefaultListModel<Cocktail> dlm, JList jlist, ArrayList<Cocktail> cocktailArrayList) {
+    public void transferDlmAndList(DefaultListModel<Cocktail> dlm, JList jlist, ArrayList<Cocktail> cocktailArrayList,BST_Cocktails bst_cocktails) {
         this.dlm = dlm;
         this.jlist = jlist;
         this.cocktailArrayList = cocktailArrayList;
+        this.bst_cocktails = bst_cocktails;
     }
+
+//    void addDlmElements() {
+//
+//        for (int i = 0; i < bst_cocktails.getCocktailArrayList().size(); i++) {
+//            dlm.addElement(bst_cocktails.getCocktailArrayList().get(i));
+//        }
+//
+//    }
 
 
 

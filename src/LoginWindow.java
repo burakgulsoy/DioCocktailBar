@@ -12,8 +12,8 @@ public class LoginWindow extends JFrame {
     JLabel lblUsername = new JLabel("Username:");
     JLabel lblPassword = new JLabel("Password:");
 
-    JTextField txtUsername = new JTextField();
-    JPasswordField txtPassword = new JPasswordField();
+    JTextField txtUsername = new JTextField("admin");
+    JPasswordField txtPassword = new JPasswordField("password");
 
     JButton btnCancel = new JButton("Cancel");
     JButton btnSubmit = new JButton("Submit");
