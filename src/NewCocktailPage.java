@@ -36,8 +36,8 @@ public class NewCocktailPage extends JFrame {
     String containsAlcohol[] = {"true", "false"};
     JComboBox<String> cbContainsAlcohol = new JComboBox<>(containsAlcohol);
 
-    String fruitsRule = "[A-Za-z]+(-[A-Za-z])*(-[A-Za-z])*";
-
+//    String fruitsRule = "[A-Za-z]+(-[A-Za-z])*(-[A-Za-z])*";
+    // didn't use this rule, had some problems with it. instead, OR operator is used
 
     public NewCocktailPage() {
         super("New Cocktail");
@@ -207,7 +207,7 @@ public class NewCocktailPage extends JFrame {
 
                         cocktailArrayList.remove(index);  // değiştirilen eleman çıkartılıyor
                         cocktailArrayList.add(newCocktail); // yeni eleman ekleniyor
-                        System.out.println("burası: " + cocktailArrayList);
+//                        System.out.println("burası: " + cocktailArrayList);
 
                         PrintWriter pw = null;  // dosyayı sıfırlayıp
                         try {
@@ -254,7 +254,7 @@ public class NewCocktailPage extends JFrame {
 
                         bst_cocktails.setCocktailArrayList(cocktailArrayList);
 
-                        System.out.println("burası2: " + cocktailArrayList);
+//                        System.out.println("burası2: " + cocktailArrayList);
                         System.out.println("son bst hali: " + bst_cocktails.getCocktailArrayList());
 
 
