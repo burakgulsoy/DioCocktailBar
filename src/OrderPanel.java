@@ -5,23 +5,25 @@ public class OrderPanel extends JFrame {
 
     JPanel pnlNorth = new JPanel();
     JPanel pnlCenter = new JPanel();
-    JPanel pnlSouth = new JPanel(new GridLayout(2,2,5,5));
-    JPanel pnlClearTable = new JPanel();
+    JPanel pnlSouth = new JPanel(new FlowLayout());
     JPanel pnlSend = new JPanel();
 
     JLabel lblOrderInformation = new JLabel("Order Information Table #");
-    JLabel lblNote = new JLabel("Note:");
 
-    JTextArea txtOrderInformation = new JTextArea();
-    JTextArea txtNote = new JTextArea();
+    DefaultListModel dlmOrderInformation = new DefaultListModel();
+    JList listOrderInformation = new JList(dlmOrderInformation);
+    JScrollPane spOrderInformation = new JScrollPane(listOrderInformation);
 
-    JButton btnClearTable = new JButton("Clear Table");
+
     JButton btnCompleteOrder = new JButton("Complete Order");
 
 
+
+
     public OrderPanel() {
+        super("Order Information Page");
         setLayout(new BorderLayout());
-        setSize(300,400);
+        setSize(350,270);
 
         setDesign();
         setListeners();
@@ -32,31 +34,23 @@ public class OrderPanel extends JFrame {
 
         add(pnlNorth, BorderLayout.NORTH);
 
-        pnlCenter.add(txtOrderInformation);
+        pnlCenter.add(spOrderInformation);
 
         add(pnlCenter, BorderLayout.CENTER);
 
-        pnlClearTable.add(btnClearTable);
         pnlSend.add(btnCompleteOrder);
 
-        pnlSouth.add(lblNote);
-        pnlSouth.add(txtNote);
-        pnlSouth.add(pnlClearTable);
         pnlSouth.add(pnlSend);
 
         add(pnlSouth, BorderLayout.SOUTH);
 
-        txtOrderInformation.setEditable(false);
-        txtOrderInformation.setLineWrap(true);
-//        txtNote.setEditable(false);
-        txtNote.setLineWrap(true);
     }
 
     void setListeners() {
 
     }
 
-//    public static void main(String[] args) {
-//        new OrderPanel().setVisible(true);
-//    }
+    public static void main(String[] args) {
+        new OrderPanel().setVisible(true);
+    }
 }

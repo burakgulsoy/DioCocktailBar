@@ -33,6 +33,10 @@ public class CustomerPanel extends JFrame {
     private double bill = 0;
     private int givenTip = 0;
 
+    TableObject table;
+
+//    ArrayList<Cocktail> arrayListForTable = new ArrayList<>();
+
 
     public CustomerPanel() {
         super("Customer Panel");
@@ -164,34 +168,34 @@ public class CustomerPanel extends JFrame {
             }
         });
 
-        btnOrder.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String successfulOperationMessage = cbTables.getSelectedItem().toString() + "\n";
-
-                successfulOperationMessage += "Successful operation:\n";
-
-                for (int i = 0; i < cocktailArrayListForQueue.size(); i++) {
-                    successfulOperationMessage += (i + 1) + ":";
-                    successfulOperationMessage += cocktailArrayListForQueue.get(i);
-                    successfulOperationMessage += "\n";
-                }
-
-                successfulOperationMessage += "Given tip: " + givenTip + "\n";
-                successfulOperationMessage += "Total bill: " + bill;
-
-                JOptionPane.showMessageDialog(btnPay,
-                        successfulOperationMessage);
-
-
-
-                // QUEUE İŞLEMLERİ
-
-
-
-                clear();
-            }
-        });
+//        btnOrder.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                String successfulOperationMessage = cbTables.getSelectedItem().toString() + "\n";
+//
+//                successfulOperationMessage += "Successful operation:\n";
+//
+//                for (int i = 0; i < cocktailArrayListForQueue.size(); i++) {
+//                    successfulOperationMessage += (i + 1) + ":";
+//                    successfulOperationMessage += cocktailArrayListForQueue.get(i);
+//                    successfulOperationMessage += "\n";
+//                }
+//
+//                successfulOperationMessage += "Given tip: " + givenTip + "\n";
+//                successfulOperationMessage += "Total bill: " + bill;
+//
+//                JOptionPane.showMessageDialog(btnPay,
+//                        successfulOperationMessage);
+//
+//                // QUEUE İŞLEMLERİ
+//                // burada arraylist'i sıfırlayınca table içindeki arraylist'i de sıfırlar mı emin değilim
+//
+//                table = new TableObject(cbTables.getSelectedItem().toString(), cocktailArrayListForQueue);
+//
+//
+//                clear();
+//            }
+//        });
     }
 
 
@@ -203,6 +207,14 @@ public class CustomerPanel extends JFrame {
         btnOrder.setEnabled(false);
         cocktailArrayListForQueue.clear();
         // it doesn't set table choice to "table1" since they will continue to give order from the same table they were sitting at
+    }
+
+    public double getBill() {
+        return bill;
+    }
+
+    public int getGivenTip() {
+        return givenTip;
     }
 
     public static void main(String[] args) {

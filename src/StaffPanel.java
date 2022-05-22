@@ -13,15 +13,15 @@ public class StaffPanel extends JFrame {
     JPanel pnlNorth = new JPanel(new GridLayout(2, 1));
     JPanel pnlSouth = new JPanel(new BorderLayout());
 
-    JButton btnTable1 = new JButton("Table #1");
-    JButton btnTable2 = new JButton("Table #2");
-    JButton btnTable3 = new JButton("Table #3");
-    JButton btnTable4 = new JButton("Table #4");
-    JButton btnTable5 = new JButton("Table #5");
-    JButton btnTable6 = new JButton("Table #6");
-    JButton btnTable7 = new JButton("Table #7");
-    JButton btnTable8 = new JButton("Table #8");
-    JButton btnTable9 = new JButton("Table #9");
+    JButton btnTable1 = new JButton("Table1");
+    JButton btnTable2 = new JButton("Table2");
+    JButton btnTable3 = new JButton("Table3");
+    JButton btnTable4 = new JButton("Table4");
+    JButton btnTable5 = new JButton("Table5");
+    JButton btnTable6 = new JButton("Table6");
+    JButton btnTable7 = new JButton("Table7");
+    JButton btnTable8 = new JButton("Table8");
+    JButton btnTable9 = new JButton("Table9");
 
     JButton btnOrderQueue = new JButton("Orders");
     JButton btnMenuManagement = new JButton("Menu Management");
@@ -71,7 +71,7 @@ public class StaffPanel extends JFrame {
 
     void setListeners() {
 
-        setActionListenersForButtons();
+//        setActionListenersForButtons();
 
         btnMenuManagement.addActionListener(new ActionListener() {
             @Override
@@ -82,71 +82,72 @@ public class StaffPanel extends JFrame {
 
     }
 
-    void setActionListenersForButtons() {
-
-        btnTable1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-        btnTable2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-        btnTable3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-        btnTable4.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-        btnTable5.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-        btnTable6.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-        btnTable7.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-        btnTable8.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-        btnTable9.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-    }
+//    void setActionListenersForButtons() {
+//
+//        btnTable1.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                orderPanel.setVisible(true);
+////                orderPanel.lblOrderInformation.setText("Order Information Table1);
+//            }
+//        });
+//
+//        btnTable2.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//            }
+//        });
+//
+//        btnTable3.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//            }
+//        });
+//
+//        btnTable4.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//            }
+//        });
+//
+//        btnTable5.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//            }
+//        });
+//
+//        btnTable6.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//            }
+//        });
+//
+//        btnTable7.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//            }
+//        });
+//
+//        btnTable8.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//            }
+//        });
+//
+//        btnTable9.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//            }
+//        });
+//    }
 
 
 
