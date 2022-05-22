@@ -1,19 +1,10 @@
-+1) içecek class'ı yap
-+2) Flavor enumeration
-+3) yeni order geldiğinde içecek objesi oluştur, txt'ye obje olarak yazdır
-+4) bst oluştur, objeleri içine at
-+5) menu management panel (see all eksik)
-6) customer panel
-7)
-
 
 EKLENTİLER
 ----------
 
 1) kokteyl ismi için sayı koyulmamalı, regex ayarlanacak (ya da not düşülsün)
-2) contains alcohol true ise alcohol rate 0 olmamalı
 3) kokteyl isminde "ç,ş,ü,ö,ı" gibi harfler kullanılmamalı, ingiliz alfabesi kullanılmalı
-4) customer menu delete single cocktail button eklenebilir
+4) customer menu delete single cocktail button eklenebilir  (İPTAL)
 
 
 
@@ -31,20 +22,12 @@ yazdırılacak
 
 *** HATALAR ***
 
-++++ ÇÖZÜLDÜ 1) Cocktails2 dosyasında hiç obje yoksa ilk objeyi override edilen method ile yapmamak gerekiyor çünkü bu method ile
-objelerin başına gelen header özelliğini kaldırdık. ancak ilk objenin başında bir header bulunması gerektiği için sıfırdan
-BST veritabanı oluştururken normal ObjectOutputStream kullanılması gerekiyor.
-Çözüm-> dosyanın boş olup olmadığını anlayabileceğimiz bir method varsa if else ile farklı output stream fonksiyonu kullanılabilir
-
 2) Kokteyl isminde sayı kullanıldığında string olarak algıladığı için, başlangıcı aynı olup sonunda (12,15,121)
 sayıları bulunduran içecekler için inorder sıralaması 12 - 121 - 15 gibi oluyor.
 Çözüm-> isimde sayı kullanımı kısıtlanabilir
 
-++++ ÇÖZÜLDÜ 3) Program açıkken yeni kokteyl eklendiğinde tüm tariflerin olduğu AllRecipes sayfasında dinamik olarak eklenmiyor.
-Program açılıp kapandıktan sonra değişiklik uygulanıyor.
-
-++++ ÇÖZÜLDÜ 4) File ismini dinamik olarak aktarmak için newcocktailpage'i allrecipes içerisine atmak gerekiyor yoksa
-file ismini okurken manuel girmek durumundayız
+5) Özdeş (temel olarak isim de olsa) kokteyl objelerini eklerken problem çıkartmıyor. Normal şartlarda aynı kokteylden iki tane olmamalı
+--> özdeş kokteyl eklenirse hata çıkarmasa da menu management bölümünde see all panelinden yanlış eklenen kokteyl silinebilir
 
 
 

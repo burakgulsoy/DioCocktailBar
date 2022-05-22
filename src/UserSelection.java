@@ -104,8 +104,7 @@ public class UserSelection extends JFrame {
                 JOptionPane.showMessageDialog(customerPanel.btnPay,
                         successfulOperationMessage);
 
-                // QUEUE İŞLEMLERİ
-                // burada arraylist'i sıfırlayınca table içindeki arraylist'i de sıfırlar mı emin değilim
+
 
                 ArrayList<Cocktail> cocktailArrayListforTableObject = new ArrayList<>();
 

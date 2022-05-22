@@ -98,7 +98,12 @@ public class NewCocktailPage extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!(txtFruits.getText().matches("[A-Za-z]+") || txtFruits.getText().matches("[A-Za-z]+[-][A-Za-z]*") || txtFruits.getText().matches("[A-Za-z]+[-][A-Za-z]*[-][A-Za-z]*"))) {
-                    txtFruits.setText("wrong");
+                    JOptionPane.showMessageDialog(btnSubmit,
+                            "Fruit names cannot contain any non-letters and you should put dash symbol (-) between them." +
+                                    "You should also use only English alphabet letters.");
+                } else if (cbContainsAlcohol.getSelectedIndex() == 0 && txtAlcoholRate.getText().equals("0")) {
+                    JOptionPane.showMessageDialog(btnSubmit,
+                            "Alcohol rate of a cocktail that contains alcohol cannot be zero");
                 } else {
                     ArrayList fruitList = new ArrayList();
                     String fruitArray[] = txtFruits.getText().split("-");
@@ -110,11 +115,11 @@ public class NewCocktailPage extends JFrame {
 
                     if (cbContainsAlcohol.getSelectedItem().equals("false")) {
                         containsAlcohol = false;
-                    } else if (cbContainsAlcohol.getSelectedItem().equals("true")){
+                    } else if (cbContainsAlcohol.getSelectedItem().equals("true")) {
                         containsAlcohol = true;
                     }
 
-                    Cocktail newCocktail = new Cocktail(txtName.getText(), containsAlcohol, Integer.parseInt(txtAlcoholRate.getText()), fruitList, (FLAVOR) cbFlavor.getSelectedItem(),Double.parseDouble(txtPrice.getText()));
+                    Cocktail newCocktail = new Cocktail(txtName.getText(), containsAlcohol, Integer.parseInt(txtAlcoholRate.getText()), fruitList, (FLAVOR) cbFlavor.getSelectedItem(), Double.parseDouble(txtPrice.getText()));
 
                     System.out.println(newCocktail);
                     if (btnSubmit.getText().equals("Submit")) {
@@ -194,7 +199,7 @@ public class NewCocktailPage extends JFrame {
                             fruitListForArrayList.add(fruitArrayForArrayList[i]);
                         }
 
-                        Cocktail cocktailToBeRemoved = new Cocktail(splitted[0],splitted[1].equals("true") ? true : false, Integer.parseInt(splitted[2]),fruitListForArrayList,flavor,Double.parseDouble(splitted[5]));
+                        Cocktail cocktailToBeRemoved = new Cocktail(splitted[0], splitted[1].equals("true") ? true : false, Integer.parseInt(splitted[2]), fruitListForArrayList, flavor, Double.parseDouble(splitted[5]));
 
 
                         int index = 0;
