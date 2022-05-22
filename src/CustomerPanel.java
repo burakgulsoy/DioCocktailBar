@@ -168,34 +168,6 @@ public class CustomerPanel extends JFrame {
             }
         });
 
-//        btnOrder.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                String successfulOperationMessage = cbTables.getSelectedItem().toString() + "\n";
-//
-//                successfulOperationMessage += "Successful operation:\n";
-//
-//                for (int i = 0; i < cocktailArrayListForQueue.size(); i++) {
-//                    successfulOperationMessage += (i + 1) + ":";
-//                    successfulOperationMessage += cocktailArrayListForQueue.get(i);
-//                    successfulOperationMessage += "\n";
-//                }
-//
-//                successfulOperationMessage += "Given tip: " + givenTip + "\n";
-//                successfulOperationMessage += "Total bill: " + bill;
-//
-//                JOptionPane.showMessageDialog(btnPay,
-//                        successfulOperationMessage);
-//
-//                // QUEUE İŞLEMLERİ
-//                // burada arraylist'i sıfırlayınca table içindeki arraylist'i de sıfırlar mı emin değilim
-//
-//                table = new TableObject(cbTables.getSelectedItem().toString(), cocktailArrayListForQueue);
-//
-//
-//                clear();
-//            }
-//        });
     }
 
 

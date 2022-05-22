@@ -6,6 +6,7 @@ public class StaffPanel extends JFrame {
 
     OrderPanel orderPanel = new OrderPanel();
     MenuManagement menuManagement = new MenuManagement();
+    SeeAllOrdersPanel seeAllOrdersPanel = new SeeAllOrdersPanel();
 
     JPanel pnlLblOccupiedTables = new JPanel(new FlowLayout());
     JPanel pnlOccupiedTables = new JPanel(new GridLayout(3, 3));
@@ -34,7 +35,8 @@ public class StaffPanel extends JFrame {
         setDesign();
         setListeners();
 
-
+        seeAllOrdersPanel.cocktailLinkedQueue.initializeQueue(); // not necessarily essential since it already makes rear and front null
+                                                                 // using queue constructor
     }
 
     void setDesign() {
@@ -71,8 +73,6 @@ public class StaffPanel extends JFrame {
 
     void setListeners() {
 
-//        setActionListenersForButtons();
-
         btnMenuManagement.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -80,83 +80,14 @@ public class StaffPanel extends JFrame {
             }
         });
 
+
+        btnOrderQueue.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                seeAllOrdersPanel.setVisible(true);
+            }
+        });
     }
-
-//    void setActionListenersForButtons() {
-//
-//        btnTable1.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                orderPanel.setVisible(true);
-////                orderPanel.lblOrderInformation.setText("Order Information Table1);
-//            }
-//        });
-//
-//        btnTable2.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
-//
-//        btnTable3.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
-//
-//        btnTable4.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
-//
-//        btnTable5.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
-//
-//        btnTable6.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
-//
-//        btnTable7.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
-//
-//        btnTable8.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
-//
-//        btnTable9.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
-//    }
-
-
-
-//    public static void main(String[] args) {
-//        new StaffPanel().setVisible(true);
-//    }
-
-
-
 
 }
 

@@ -111,6 +111,8 @@ public class UserSelection extends JFrame {
 
                 for (int i = 0; i < customerPanel.cocktailArrayListForQueue.size(); i++) {
                     cocktailArrayListforTableObject.add(customerPanel.cocktailArrayListForQueue.get(i));
+                    staffpanel.seeAllOrdersPanel.cocktailLinkedQueue.addQueue(customerPanel.cocktailArrayListForQueue.get(i));
+                    staffpanel.seeAllOrdersPanel.dlmQueue.addElement(customerPanel.cbTables.getSelectedItem().toString() + ": " + customerPanel.cocktailArrayListForQueue.get(i));
                 }
 
                 TableObject table = new TableObject(customerPanel.cbTables.getSelectedItem().toString(), cocktailArrayListforTableObject);
@@ -154,8 +156,6 @@ public class UserSelection extends JFrame {
                         break;
                 }
 
-                System.out.println(staffpanel.btnTable2.getBackground());
-//                System.out.println(table);
                 customerPanel.clear();
                 System.out.println(table);
 
