@@ -61,6 +61,8 @@ public class UserSelection extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 lw.setVisible(true);
+                lw.txtUsername.setText("admin");
+                lw.txtPassword.setText("password");
             }
         });
 

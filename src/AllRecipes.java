@@ -66,6 +66,7 @@ public class AllRecipes extends JFrame {
                 newCocktailPage.clear();
                 newCocktailPage.setVisible(true);
                 newCocktailPage.btnSubmit.setText("Update");
+                newCocktailPage.setTitle("Edit Cocktail");
 
                 String element = list.getSelectedValue().toString();
                 String splitted[] = element.split(" ");
@@ -163,19 +164,19 @@ public class AllRecipes extends JFrame {
                     fruitListForArrayList.add(fruitArrayForArrayList[i]);
                 }
 
-                Cocktail newCocktailToBeAddedToArrayList = new Cocktail(splitted[0],splitted[1].equals("true") ? true : false, Integer.parseInt(splitted[2]),fruitListForArrayList,flavor,Double.parseDouble(splitted[5]));
+                Cocktail newCocktailToBeRemoved = new Cocktail(splitted[0],splitted[1].equals("true") ? true : false, Integer.parseInt(splitted[2]),fruitListForArrayList,flavor,Double.parseDouble(splitted[5]));
 
 
                 int index = 0;
 
                 for (int i = 0; i < cocktailArrayList.size(); i++) {
-                    if (cocktailArrayList.get(i).toString().equals(newCocktailToBeAddedToArrayList.toString())) {
+                    if (cocktailArrayList.get(i).toString().equals(newCocktailToBeRemoved.toString())) {
                         index = i;
                     }
                 }
 
                 cocktailArrayList.remove(index);
-                dlm.remove(index);
+                dlm.remove(list.getSelectedIndex());
 
                 PrintWriter pw = null;
                 try {
@@ -189,7 +190,8 @@ public class AllRecipes extends JFrame {
                     newCocktailPage.registerNewCocktail(cocktailArrayList.get(i)); // dosyayı sıfırlayıp yeniden oluşturuyor
                 }
 
-                bst_cocktails.setCocktailArrayList(cocktailArrayList); // !!!!!!!!!
+                bst_cocktails.setCocktailArrayList(cocktailArrayList); //varliği henuz problem yaratmadi, yoklugu fark eder mi emin degilim
+                // !!!!!
 
             }
         });

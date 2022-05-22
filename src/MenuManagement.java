@@ -39,6 +39,8 @@ public class MenuManagement extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 newCocktailPage.btnSubmit.setText("Submit");
+                newCocktailPage.setTitle("New Cocktail");
+                newCocktailPage.clear();
                 newCocktailPage.setVisible(true);
                 setVisible(false);
             }
