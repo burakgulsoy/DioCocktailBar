@@ -34,9 +34,6 @@ public class CustomerPanel extends JFrame {
     private int givenTip = 0;
 
 
-
-
-
     public CustomerPanel() {
         super("Customer Panel");
 
@@ -205,6 +202,7 @@ public class CustomerPanel extends JFrame {
         lblBill.setText("Bill:                         ");
         btnOrder.setEnabled(false);
         cocktailArrayListForQueue.clear();
+        // it doesn't set table choice to "table1" since they will continue to give order from the same table they were sitting at
     }
 
     public static void main(String[] args) {
