@@ -1,40 +1,26 @@
 
-EKLENTİLER
-----------
-
-1) kokteyl ismi için sayı koyulmamalı, regex ayarlanacak (ya da not düşülsün)
-3) kokteyl isminde "ç,ş,ü,ö,ı" gibi harfler kullanılmamalı, ingiliz alfabesi kullanılmalı
-4) customer menu delete single cocktail button eklenebilir  (İPTAL)
-
-
-
 **** BINARY SEARCH TREE ****
-program açıldığında Cocktails txt dosyası içerisine Cocktail objesi olarak kaydedilmiş nesneleri çekerken
-BST'nin inorder özelliğinden faydalanarak alfabetik sıralanmış bir arraylist oluşturuyoruz. yeni bir kokteyl oluşturulduğunda
-veya mevcut kokteyllerden herhangi biri güncellendiğinde BST içeriği değiştiriliyor, arraylist'imiz de güncelleniyor.
+
+At the beginning of the program, it reads data (cocktail objects) from Cocktails.txt and by using BST inorder (makes alphabetically order)
+it creates a sorted arraylist. After creating a new cocktail or editing/deleting an existing cocktail, it rearranges the arraylist and BST.
 
 
 **** QUEUE ****
-yeni bir order geldiği zaman sıraya eklenecek ve staff menüsünde orders
-sayfasında queue'deki elemanlar çekilerek gösterilecek, sırayla baştan aşağı
-yazdırılacak
+
+When a customer creates a new order, system adds the cocktails from customer's order list to the queue. They will also be displayed
+in a default list model panel in order. By using a panel, the barmaid can only send the order at the top,
+which satisfies "first in first out" philosophy of queue structure.
 
 
-*** HATALAR ***
+--------------------------------------------------------------------------------------------------------------------------------------------
 
-2) Kokteyl isminde sayı kullanıldığında string olarak algıladığı için, başlangıcı aynı olup sonunda (12,15,121)
-sayıları bulunduran içecekler için inorder sıralaması 12 - 121 - 15 gibi oluyor.
-Çözüm-> isimde sayı kullanımı kısıtlanabilir
+*** PROBLEMS TO CONSIDER ***
 
-5) Özdeş (temel olarak isim de olsa) kokteyl objelerini eklerken problem çıkartmıyor. Normal şartlarda aynı kokteylden iki tane olmamalı
---> özdeş kokteyl eklenirse hata çıkarmasa da menu management bölümünde see all panelinden yanlış eklenen kokteyl silinebilir
+a) You can create new "identical" cocktail recipes. It can recognize if their name is different. Identical cocktails are not shown in the panel
+but their data still stays in Cocktails.txt .  You can see this after adding another new cocktail because by that time it shows those identical
+cocktails. It is probably like that because cocktails are also stored in the arraylist and we rearrange the DLM according to that.
 
+b) In order for customers to display new changes in menu (new cocktail, updated cocktail, deleted cocktail) program needs to be restarted.
+This wouldn't be a problem if we had used a real SQL database but in this case we're reading the data from a txt file, supported by arraylist
+and it would make things too complicated if we had tried also updating customers' menu after making changes in staff panel menu.
 
-
-*** EK NOT ***
-
-1) Eğer Staff tarafında kullanılan BST ve okuma işlemlerini Customer ile ortak hale getirirsek Staff tarafında bir değişiklik
-yapıldığı zaman Customer bölümünde bilgi görüntüleme, sepete ekleme vb. işlemlerde değişikliği çok yüksek ihtimalle algılamayacaktır
-veya silinmiş bir objeyi bulamadığı zaman sıkıntı çıkartabilir. Bu yüzden gerçekçi de düşünmek gerekirse ve SQL tarzı bir database
-kullanmadığımız göz önünde bulundurulursa Cocktail txt ile ilgili bir değişiklik yapıldığında programı kapatıp açmak ve bilgileri
-güncellemek en doğrusu olacaktır. Dolayısıyla Customer tarafında ayrı bir dosya okuma ve BST oluşturma işlemi kullanılacaktır.

@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class UserSelection extends JFrame {
-    JLabel lblTitle = new JLabel("Cocktail Bar System User Selection");
+    JLabel lblTitle = new JLabel("Dio Cocktail Bar System User Selection");
 
     JButton btnStaff = new JButton("Staff");
     JButton btnCustomer = new JButton("Customer");
@@ -16,7 +16,6 @@ public class UserSelection extends JFrame {
     JPanel pnlTitle = new JPanel(new BorderLayout());
     JPanel pnlButtons = new JPanel(new GridLayout(1,2));
 
-//    LoginWindow lw = new LoginWindow();
     StaffPanel staffpanel = new StaffPanel();
     CustomerPanel customerPanel = new CustomerPanel();
 
@@ -36,15 +35,14 @@ public class UserSelection extends JFrame {
         setDesign();
         setListeners();
 
-//        createBST();
-//        outputBST();
     }
 
 
     void setDesign() {
 
         setLayout(new BorderLayout());
-        setSize(430,250);
+        setSize(460,250);
+        setResizable(false);
 
         pnlBtnStaff.add(btnStaff);
         pnlBtnCustomer.add(btnCustomer);
@@ -70,9 +68,6 @@ public class UserSelection extends JFrame {
         btnStaff.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                lw.setVisible(true);
-//                lw.txtUsername.setText("admin");
-//                lw.txtPassword.setText("password");
                 staffpanel.setVisible(true);
             }
         });

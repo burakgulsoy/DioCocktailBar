@@ -70,7 +70,6 @@ public class BST_Cocktails {
 
         inorder(root.getLeft());
         System.out.println(root.getElement() + " ");
-//        cocktailArrayList.add(root.getElement());
         inorder(root.getRight());
     }
 
@@ -80,7 +79,6 @@ public class BST_Cocktails {
         }
 
         inorderCreatingArrayList(root.getLeft());
-//        System.out.println(root.getElement() + " ");
         cocktailArrayList.add(root.getElement());
         inorderCreatingArrayList(root.getRight());
     }

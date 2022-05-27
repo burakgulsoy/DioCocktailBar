@@ -14,10 +14,10 @@ public class NewCocktailPage extends JFrame {
     JPanel pnlCenter = new JPanel(new GridLayout(6, 2, 15, 10));
     JPanel pnlSouth = new JPanel(new FlowLayout());
 
-    JLabel lblName = new JLabel("Name:");
+    JLabel lblName = new JLabel("Name: (Without space)");
     JLabel lblContainsAlcohol = new JLabel("Contains Alcohol:");
     JLabel lblAlcoholRate = new JLabel("Alcohol Rate:");
-    JLabel lblFruits = new JLabel("Fruits: (fruit1-fruit2-fruit3) max3");
+    JLabel lblFruits = new JLabel("Ingredients: (ig1-ig2-ig3) max3");
     JLabel lblFlavor = new JLabel("Flavor:");
     JLabel lblPrice = new JLabel("Price:");
 
@@ -36,8 +36,6 @@ public class NewCocktailPage extends JFrame {
     String containsAlcohol[] = {"true", "false"};
     JComboBox<String> cbContainsAlcohol = new JComboBox<>(containsAlcohol);
 
-//    String fruitsRule = "[A-Za-z]+(-[A-Za-z])*(-[A-Za-z])*";
-    // didn't use this rule, had some problems with it. instead, OR operator is used
 
     public NewCocktailPage() {
         super("New Cocktail");
@@ -75,8 +73,6 @@ public class NewCocktailPage extends JFrame {
 
     void setListeners() {
 
-
-
         btnCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -93,7 +89,6 @@ public class NewCocktailPage extends JFrame {
         });
 
 
-
         btnSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -104,6 +99,15 @@ public class NewCocktailPage extends JFrame {
                 } else if (cbContainsAlcohol.getSelectedIndex() == 0 && txtAlcoholRate.getText().equals("0")) {
                     JOptionPane.showMessageDialog(btnSubmit,
                             "Alcohol rate of a cocktail that contains alcohol cannot be zero");
+                } else if (!txtName.getText().matches("[\\w]+")) {
+                    JOptionPane.showMessageDialog(btnSubmit,
+                            "If cocktail's name consists of more than one word, write it without putting any space between them.");
+                } else if (!(txtAlcoholRate.getText().matches("[\\d]{1,3}"))) {
+                    JOptionPane.showMessageDialog(btnSubmit,
+                            "Write at most three integer values without any space (alcohol rate)");
+                } else if (!(txtPrice.getText().matches("[\\d]{1,3}"))) {
+                    JOptionPane.showMessageDialog(btnSubmit,
+                            "Write at most three integer values without any space (price)");
                 } else {
                     ArrayList fruitList = new ArrayList();
                     String fruitArray[] = txtFruits.getText().split("-");
@@ -119,7 +123,7 @@ public class NewCocktailPage extends JFrame {
                         containsAlcohol = true;
                     }
 
-                    Cocktail newCocktail = new Cocktail(txtName.getText(), containsAlcohol, Integer.parseInt(txtAlcoholRate.getText()), fruitList, (FLAVOR) cbFlavor.getSelectedItem(), Double.parseDouble(txtPrice.getText()));
+                    Cocktail newCocktail = new Cocktail(txtName.getText().trim(), containsAlcohol, Integer.parseInt(txtAlcoholRate.getText()), fruitList, (FLAVOR) cbFlavor.getSelectedItem(), Double.parseDouble(txtPrice.getText()));
 
                     System.out.println(newCocktail);
                     if (btnSubmit.getText().equals("Submit")) {
@@ -157,10 +161,8 @@ public class NewCocktailPage extends JFrame {
                             dlm.addElement(cocktailArray[i]);
                         }
 
-
-//                        dlm.addElement(newCocktail);
                     } else if (btnSubmit.getText().equals("Update")) {
-                        String element = jlist.getSelectedValue().toString();
+                        String element = jlist.getSelectedValue().toString().trim();
                         String splitted[] = element.split(" ");
 
                         FLAVOR flavor = null;
@@ -210,11 +212,10 @@ public class NewCocktailPage extends JFrame {
                             }
                         }
 
-                        cocktailArrayList.remove(index);  // değiştirilen eleman çıkartılıyor
-                        cocktailArrayList.add(newCocktail); // yeni eleman ekleniyor
-//                        System.out.println("burası: " + cocktailArrayList);
+                        cocktailArrayList.remove(index);  // remove changed cocktail
+                        cocktailArrayList.add(newCocktail); // add new cocktail
 
-                        PrintWriter pw = null;  // dosyayı sıfırlayıp
+                        PrintWriter pw = null;  // reset file
                         try {
                             pw = new PrintWriter(fileName);
                         } catch (FileNotFoundException ex) {
@@ -223,7 +224,7 @@ public class NewCocktailPage extends JFrame {
                         pw.close();
 
                         for (int i = 0; i < cocktailArrayList.size(); i++) {
-                            registerNewCocktail(cocktailArrayList.get(i));  // değiştirilmiş versiyonla birlikte dosyaya tekrar yazdırıyoruz
+                            registerNewCocktail(cocktailArrayList.get(i));  // write it again with new version of cocktail
                         }
                         dlm.clear();
 
@@ -259,15 +260,10 @@ public class NewCocktailPage extends JFrame {
 
                         bst_cocktails.setCocktailArrayList(cocktailArrayList);
 
-//                        System.out.println("burası2: " + cocktailArrayList);
-                        System.out.println("son bst hali: " + bst_cocktails.getCocktailArrayList());
-
+                        System.out.println("bst_cocktails_final_version: " + bst_cocktails.getCocktailArrayList());
 
                     }
-
                 }
-
-
             }
         });
 
@@ -287,26 +283,13 @@ public class NewCocktailPage extends JFrame {
     DefaultListModel<Cocktail> dlm;
     JList jlist;
     ArrayList<Cocktail> cocktailArrayList;
-    public void transferDlmAndList(DefaultListModel<Cocktail> dlm, JList jlist, ArrayList<Cocktail> cocktailArrayList,BST_Cocktails bst_cocktails) {
+
+    public void transferDlmAndList(DefaultListModel<Cocktail> dlm, JList jlist, ArrayList<Cocktail> cocktailArrayList, BST_Cocktails bst_cocktails) {
         this.dlm = dlm;
         this.jlist = jlist;
         this.cocktailArrayList = cocktailArrayList;
         this.bst_cocktails = bst_cocktails;
     }
-
-//    void addDlmElements() {
-//
-//        for (int i = 0; i < bst_cocktails.getCocktailArrayList().size(); i++) {
-//            dlm.addElement(bst_cocktails.getCocktailArrayList().get(i));
-//        }
-//
-//    }
-
-
-
-//    public static void main(String[] args) {
-//        new NewCocktailPage().setVisible(true);
-//    }
 
     void clear() {
         txtName.setText("");
@@ -320,26 +303,23 @@ public class NewCocktailPage extends JFrame {
 
     void registerNewCocktail(Cocktail newCocktail) {
 
-          ObjectOutputStream oos;
+        ObjectOutputStream oos;
 //        AppendingObjectOutputStream aoos;
         try {
             if (file.length() != 0) {
                 AppendingObjectOutputStream aoos;
                 aoos = new AppendingObjectOutputStream(new FileOutputStream(fileName, true));
                 aoos.writeObject(newCocktail);
-//            System.out.println(newCocktail);
                 aoos.close();
             } else {
                 oos = new ObjectOutputStream(new FileOutputStream(fileName));
                 oos.writeObject(newCocktail);
                 oos.close();
             }
-//
 //            oos.reset();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
 
     }
@@ -353,7 +333,7 @@ public class NewCocktailPage extends JFrame {
     }
 }
 
- class AppendingObjectOutputStream extends ObjectOutputStream {
+class AppendingObjectOutputStream extends ObjectOutputStream {
 
     public AppendingObjectOutputStream(OutputStream out) throws IOException {
         super(out);
@@ -363,7 +343,5 @@ public class NewCocktailPage extends JFrame {
     protected void writeStreamHeader() throws IOException {
         reset();
     }
-
-
 
 }

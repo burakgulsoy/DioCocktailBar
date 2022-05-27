@@ -7,7 +7,6 @@ public class MenuManagement extends JFrame {
 
     NewCocktailPage newCocktailPage = new NewCocktailPage();
     AllRecipes allRecipes = new AllRecipes(newCocktailPage);
-
     JPanel pnlButtons = new JPanel(new GridLayout(1, 2, 10, 10));
     JButton btnNew = new JButton("New");
     JButton btnSeeAll = new JButton("See All");
@@ -15,7 +14,6 @@ public class MenuManagement extends JFrame {
 
     public MenuManagement() {
         super("Menu Management");
-
 
         setDesign();
         setListeners();
@@ -34,7 +32,6 @@ public class MenuManagement extends JFrame {
     }
 
     void setListeners() {
-
         btnNew.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,10 +52,5 @@ public class MenuManagement extends JFrame {
         });
     }
 
-
-
-//    public static void main(String[] args) {
-//        new MenuManagement().setVisible(true);
-//    }
 
 }

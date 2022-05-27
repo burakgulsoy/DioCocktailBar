@@ -14,10 +14,7 @@ public class OrderPanel extends JFrame {
     JList listOrderInformation = new JList(dlmOrderInformation);
     JScrollPane spOrderInformation = new JScrollPane(listOrderInformation);
 
-
     JButton btnCompleteOrder = new JButton("Complete Order");
-
-
 
 
     public OrderPanel() {
@@ -43,7 +40,6 @@ public class OrderPanel extends JFrame {
         pnlSouth.add(pnlSend);
 
         add(pnlSouth, BorderLayout.SOUTH);
-
     }
 
     void setListeners() {

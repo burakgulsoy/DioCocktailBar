@@ -31,8 +31,8 @@ public class AllRecipes extends JFrame {
         createBST();
 //        outputBST();
 
-        bst_cocktails.inorderCreatingArrayList(bst_cocktails.getRoot()); // bst cocktails içindeki arraylist burada oluşturuluyor
-        System.out.println("bst_cocktails: " + bst_cocktails.getCocktailArrayList()); // başlangıçta dosyayı doğru okuyup okumadığını kontrol
+        bst_cocktails.inorderCreatingArrayList(bst_cocktails.getRoot()); // create arraylist in BST
+        System.out.println("bst_cocktails: " + bst_cocktails.getCocktailArrayList()); // write initial version of BST to terminal
 
         setDesign();
         setListeners();
@@ -187,11 +187,10 @@ public class AllRecipes extends JFrame {
                 pw.close();
 
                 for (int i = 0; i < cocktailArrayList.size(); i++) {
-                    newCocktailPage.registerNewCocktail(cocktailArrayList.get(i)); // dosyayı sıfırlayıp yeniden oluşturuyor
+                    newCocktailPage.registerNewCocktail(cocktailArrayList.get(i)); // reset file and create it again
                 }
 
-                bst_cocktails.setCocktailArrayList(cocktailArrayList); //varliği henuz problem yaratmadi, yoklugu fark eder mi emin degilim
-                // !!!!!
+                bst_cocktails.setCocktailArrayList(cocktailArrayList);
 
             }
         });
@@ -218,8 +217,7 @@ public class AllRecipes extends JFrame {
                         ois = new ObjectInputStream(new FileInputStream("Cocktails"));
                         while (true) {
                             Cocktail cocktail = (Cocktail) ois.readObject();
-//                ois.close();
-//                System.out.println(cocktail);
+
                             bst_cocktails.insert(cocktail);
                             cocktailArrayList.add(cocktail);
 
@@ -236,31 +234,17 @@ public class AllRecipes extends JFrame {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-//            System.out.println("cocktail arraylist in allrecipes: " + cocktailArrayList);
         }
 
-    }
-
-    void outputBST() {
-        bst_cocktails.inorder(bst_cocktails.getRoot());
     }
 
     void addDlmElements() {
 
         for (int i = 0; i < bst_cocktails.getCocktailArrayList().size(); i++) {
             dlm.addElement(bst_cocktails.getCocktailArrayList().get(i));
-//            System.out.println(i + ".: " + bst_cocktails.getCocktailArrayList().get(i));
         }
 
     }
 
-
-
-
-
-//    public static void main(String[] args) {
-//        new AllRecipes().setVisible(true);
-//    }
 
 }

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public class CustomerPanelMenu extends JFrame {
 
     SeeInformationPanel seeInformationPanel = new SeeInformationPanel();
-//    ArrayList<Cocktail> cocktailArrayListCustomer = new ArrayList<>();   // aslında BST içindeki arraylist kullanılabilir buna gerek yok
     File file = new File("Cocktails");
 
     BST_Cocktails bst_cocktailsCustomer = new BST_Cocktails();
@@ -22,7 +21,6 @@ public class CustomerPanelMenu extends JFrame {
     DefaultListModel dlm = new DefaultListModel();
     JList list = new JList(dlm);
     JScrollPane sp = new JScrollPane(list);
-
 
 
     public CustomerPanelMenu() {
@@ -100,15 +98,12 @@ public class CustomerPanelMenu extends JFrame {
                     fruitListForArrayList.add(fruitArrayForArrayList[i]);
                 }
 
-
                 seeInformationPanel.lblNameInfo.setText(splitted[0]);
                 seeInformationPanel.lblContainsAlcoholInfo.setText(splitted[1]);
                 seeInformationPanel.lblAlcoholRateInfo.setText(splitted[2]);
                 seeInformationPanel.lblFruitsInfo.setText(fruitListForArrayList.toString());
                 seeInformationPanel.lblFlavorInfo.setText(flavor.toString());
                 seeInformationPanel.lblPriceInfo.setText(splitted[5]);
-
-
 
                 seeInformationPanel.setVisible(true);
             }
@@ -148,6 +143,5 @@ public class CustomerPanelMenu extends JFrame {
         }
 
     }
-
 
 }

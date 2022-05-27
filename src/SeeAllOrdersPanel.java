@@ -24,7 +24,7 @@ public class SeeAllOrdersPanel extends JFrame {
     public SeeAllOrdersPanel() {
         super("See All Orders");
         setLayout(new BorderLayout());
-        setSize(370,290);
+        setSize(400,290);
 
         setDesign();
         setListeners();

@@ -59,5 +59,4 @@ public class Queue {
         }
     }
 
-    // dlm'ye ekleyecek şekilde output queue tarzı bir ek method yazmak lazım
 }

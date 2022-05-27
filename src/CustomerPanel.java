@@ -35,7 +35,6 @@ public class CustomerPanel extends JFrame {
 
     TableObject table;
 
-//    ArrayList<Cocktail> arrayListForTable = new ArrayList<>();
 
 
     public CustomerPanel() {
@@ -48,7 +47,7 @@ public class CustomerPanel extends JFrame {
     void setDesign() {
 
         setLayout(new BorderLayout());
-        setSize(350,350);
+        setSize(380,350);
         setLocation(600,240);
 
         pnlCenterRight.add(lblSelectTable);
@@ -83,6 +82,8 @@ public class CustomerPanel extends JFrame {
                 customerPanelMenu.setVisible(true);
             }
         });
+
+
 
         customerPanelMenu.btnAddToOrderList.addActionListener(new ActionListener() {
             @Override
@@ -178,7 +179,7 @@ public class CustomerPanel extends JFrame {
         lblBill.setText("Bill:                         ");
         btnOrder.setEnabled(false);
         cocktailArrayListForQueue.clear();
-        // it doesn't set table choice to "table1" since they will continue to give order from the same table they were sitting at
+        // it doesn't set table choice to "table1" since they may continue to give order from the same table they were sitting at
     }
 
     public double getBill() {
