@@ -9,27 +9,20 @@ public class SeeInformationPanel extends JFrame {
     JLabel lblContainsAlcoholInfo = new JLabel();
     JLabel lblAlcoholRate = new JLabel("Alcohol Rate:");
     JLabel lblAlcoholRateInfo = new JLabel();
-    JLabel lblFruits = new JLabel("Fruits:");
+    JLabel lblFruits = new JLabel("Ingredients:");
     JLabel lblFruitsInfo = new JLabel();
     JLabel lblFlavor = new JLabel("Flavor:");
     JLabel lblFlavorInfo = new JLabel();
     JLabel lblPrice = new JLabel("Price:");
     JLabel lblPriceInfo = new JLabel();
 
-
-
     JPanel pnlCenter = new JPanel(new GridLayout(6, 2, 15, 10));
 
-
-
-
     public SeeInformationPanel() {
-        super("See All Information");
+        super("See Information Panel");
 
         setDesign();
-        setListeners();
     }
-
     void setDesign() {
         setSize(400, 320);
         setLayout(new BorderLayout());
@@ -51,10 +44,5 @@ public class SeeInformationPanel extends JFrame {
 
 
     }
-
-    void setListeners() {
-
-    }
-
 
 }

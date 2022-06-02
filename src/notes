@@ -1,4 +1,3 @@
-
 **** BINARY SEARCH TREE ****
 
 At the beginning of the program, it reads data (cocktail objects) from Cocktails.txt and by using BST inorder (makes alphabetically order)
@@ -10,7 +9,6 @@ it creates a sorted arraylist. After creating a new cocktail or editing/deleting
 When a customer creates a new order, system adds the cocktails from customer's order list to the queue. They will also be displayed
 in a default list model panel in order. By using a panel, the barmaid can only send the order at the top,
 which satisfies "first in first out" philosophy of queue structure.
-
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 

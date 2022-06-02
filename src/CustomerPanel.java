@@ -35,8 +35,6 @@ public class CustomerPanel extends JFrame {
 
     TableObject table;
 
-
-
     public CustomerPanel() {
         super("Customer Panel");
 
@@ -190,7 +188,4 @@ public class CustomerPanel extends JFrame {
         return givenTip;
     }
 
-    public static void main(String[] args) {
-        new CustomerPanel().setVisible(true);
-    }
 }

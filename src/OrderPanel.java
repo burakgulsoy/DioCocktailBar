@@ -18,12 +18,11 @@ public class OrderPanel extends JFrame {
 
 
     public OrderPanel() {
-        super("Order Information Page");
+        super("Order Panel");
         setLayout(new BorderLayout());
         setSize(350,270);
 
         setDesign();
-        setListeners();
     }
 
     void setDesign() {
@@ -42,11 +41,6 @@ public class OrderPanel extends JFrame {
         add(pnlSouth, BorderLayout.SOUTH);
     }
 
-    void setListeners() {
 
-    }
 
-    public static void main(String[] args) {
-        new OrderPanel().setVisible(true);
-    }
 }
