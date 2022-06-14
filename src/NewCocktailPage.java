@@ -1,10 +1,8 @@
 import javax.swing.*;
-import javax.swing.plaf.BorderUIResource;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class NewCocktailPage extends JFrame {
     private String fileName = "Cocktails";
